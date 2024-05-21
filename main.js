@@ -8,8 +8,12 @@ app.get("/", (req, res) => res.sendFile(__dirname + "/public/index.html"));
 app.listen(port, async () => {
   console.log("listening port:", port);
 
-  const url = await create_tunnel();
-  await try_open_url(url);
+  try {
+    const url = await create_tunnel();
+    await try_open(url);
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 const create_tunnel = async () => {
@@ -22,15 +26,14 @@ const create_tunnel = async () => {
   return tunnel.url;
 };
 
-const try_open_url = async (url) => {
+const try_open = async (url) => {
   console.log("external url:", url);
 
-  if (process.platform != "darwin") {
-    return;
-  }
-
-  const { exec } = require("child_process");
-  exec(`open ${url}`, (error, stdout, stderr) => {
-    error && console.error(`Command execution failed: ${error}`);
+  const puppeteer = require("puppeteer");
+  const browser = await puppeteer.launch({
+    headless: false,
+    devtools: true,
   });
+  const page = await browser.newPage();
+  await page.goto(url);
 };

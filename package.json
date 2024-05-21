@@ -1,7 +1,7 @@
 {
   "name": "tunnel-server",
   "version": "1.0.0",
-  "description": "start external server",
+  "description": "start external server and open with browser",
   "main": "main.js",
   "scripts": {
     "dev": "node main.js"
@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
-    "localtunnel": "^2.0.2"
+    "localtunnel": "^2.0.2",
+    "puppeteer": "^22.9.0"
   }
 }
