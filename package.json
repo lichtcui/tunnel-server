@@ -1,17 +1,16 @@
 {
-  "name": "local-server",
+  "name": "tunnel-server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "start external server",
+  "main": "main.js",
   "scripts": {
     "dev": "node main.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "licht cui",
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
-    "localtunnel": "^2.0.2",
-    "puppeteer": "^22.8.0"
+    "localtunnel": "^2.0.2"
   }
 }
